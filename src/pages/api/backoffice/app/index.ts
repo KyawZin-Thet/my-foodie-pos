@@ -12,6 +12,7 @@ export default async function handler(
   const method = req.method;
   if (method === "GET") {
     const session = await getServerSession(req, res, authOptions);
+
     if (!session) return res.status(401).send("Unauthorized.");
     const user = session.user;
     const name = user?.name as string;
